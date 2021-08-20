@@ -30,6 +30,8 @@ let eHeight = 60;
 let ePosX = canvas.width / 2 - 30;
 let ePosY = canvas.height / 2 - 30;
 
+let speed = 1;
+
 class Planet {
   constructor(x, y, width, height) {
     this.x = x;
@@ -210,7 +212,7 @@ function createCorona() {
     }
     let angle = Math.atan2(canvas.height / 2 - y, canvas.width / 2 - x);
 
-    let speed = 1;
+    
     if (score < 500) {
       speed = 1;
     } else if (speed < 1000) {
@@ -249,8 +251,8 @@ startButton.addEventListener("click", (e) => {
     );
 
     let velocity = {
-      x: Math.cos(angle) * 4,
-      y: Math.sin(angle) * 4,
+      x: Math.cos(angle) * (speed >4 ? speed : 4),
+      y: Math.sin(angle) * (speed >4 ? speed : 4),
     };
 
     let bullet = new Bullet(
